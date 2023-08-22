@@ -53,7 +53,7 @@ function App() {
               )
             }) 
             : 
-            "No card"
+            <div>No result</div>
           }
         </div>
 
