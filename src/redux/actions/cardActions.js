@@ -26,7 +26,17 @@ export const searchData = (query) => (dispatch, getState) => {
         return post.title.toLowerCase().includes(query.toLowerCase())
     })
 
-    console.log(searchResult)
-
     dispatch({type:actions.SEARCH_RESULT, payload: searchResult})
+}
+
+export const sortAscData = () => (dispatch, getState) => {
+    const { CardReducers } = getState();
+
+    dispatch({type: actions.SORT_ASC_RESULT, payload: CardReducers.post});
+}
+
+export const sortDescData = () => (dispatch, getState) => {
+    const { CardReducers } = getState();
+
+    dispatch({type: actions.SORT_DESC_RESULT, payload: CardReducers.post});
 }

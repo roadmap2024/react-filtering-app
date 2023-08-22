@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { searchData } from '../redux/actions/cardActions'
+import { searchData, sortAscData, sortDescData } from '../redux/actions/cardActions'
 
 const Header = ({ search, setSearch, handleChange }) => {
     const [sort, setSort] = useState('asc');
@@ -10,7 +10,13 @@ const Header = ({ search, setSearch, handleChange }) => {
 
     useEffect(() => {
         dispatch(searchData(search));
-    }, [search, dispatch])
+        if (sort === "asc") {
+            dispatch(sortAscData());
+        }
+        if (sort === "desc") {
+            dispatch(sortDescData());
+        }
+    }, [search, sort, dispatch])
 
     return (
         <header>
@@ -30,6 +36,7 @@ const Header = ({ search, setSearch, handleChange }) => {
 
                 <div className="sortBar">
                     <select
+                        onChange={(e) => setSort(e.target.value)}
                         style={{height: "54px", padding: "5px", marginLeft: "30px", width: "90px"}}
                         >
                         <option value="asc">ASC</option>
