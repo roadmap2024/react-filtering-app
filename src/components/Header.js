@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { searchData } from '../redux/actions/cardActions'
 
 const Header = ({ search, setSearch, handleChange }) => {
     const [sort, setSort] = useState('asc');
+    
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(searchData(search));
+    }, [search, dispatch])
+
     return (
         <header>
             <div className="title">
                 <h1 style={{color: "#000000B8"}}>React Redux Fitering App</h1>
             </div>
 
-            <div className="filters" style={{display: "flex", justifyContent: "center", marginRight: "30px"}}>
+            <div className="filters" style={{display: "flex", justifyContent: "center", marginTop: "50px"}}>
                 <div className="searchInput">
                     <input 
-                        style={{height: "40px", padding: "5px", paddingLeft: "10px", width: "300px"}}
+                        style={{height: "40px", padding: "5px", paddingLeft: "10px", width: "300px", fontSize: "17px"}}
                         type="text"
                         value={search}
                         onChange={handleChange}
