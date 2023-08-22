@@ -40,9 +40,9 @@ function App() {
             currentItems ? currentItems.map((item, i) => {
               return(
                 <div style={{border: "1px solid #787878", padding: "15px"}} key={i}>
-                  <div style={{display: 'flex', borderBottom: "1px solid #787878", height: "55px"}}>
-                    <div style={{textAlign: 'start', fontWeight: 'bold', fontSize: "20px", marginRight: "7px", width: "15%"}}>Title : </div>
-                    <div style={{width: "85%", textAlign: "start"}}>{item.title}</div>
+                  <div className="card-header">
+                    <div className='title-style'>Title : </div>
+                    <div style={{width: "80%", textAlign: "start", marginBottom: "10px"}}>{item.title}</div>
                   </div>
                   
                   <div style={{marginTop: "10px"}}>

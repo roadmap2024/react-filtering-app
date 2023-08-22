@@ -8,6 +8,7 @@ const Pagenation = ({ pageCount, currentPage, onChange }) => {
     return (
         <Stack spacing={2}>
             <Pagination 
+                className="pagenation"
                 variant="outlined" 
                 color="primary" 
                 count={pageCount}

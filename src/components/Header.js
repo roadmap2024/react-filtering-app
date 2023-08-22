@@ -27,7 +27,7 @@ const Header = ({ search, setSearch, handleChange }) => {
             <div className="filters" style={{display: "flex", justifyContent: "center", marginTop: "50px"}}>
                 <div className="searchInput">
                     <input 
-                        style={{height: "40px", padding: "5px", paddingLeft: "10px", width: "300px", fontSize: "17px"}}
+                        className="input-style"
                         type="text"
                         value={search}
                         onChange={handleChange}
@@ -36,8 +36,8 @@ const Header = ({ search, setSearch, handleChange }) => {
 
                 <div className="sortBar">
                     <select
+                        className="select-style"
                         onChange={(e) => setSort(e.target.value)}
-                        style={{height: "54px", padding: "5px", marginLeft: "30px", width: "90px"}}
                         >
                         <option value="asc">ASC</option>
                         <option value="desc">DESC</option>
