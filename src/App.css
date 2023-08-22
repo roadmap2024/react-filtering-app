@@ -40,6 +40,91 @@
   grid-gap: 50px;
 }
 
+.card-header {
+  display: flex;
+  border-bottom: 1px solid #787878;
+}
+
+.input-style {
+  height: 40px;
+  padding: 5px;
+  padding-left: 10px;
+  width: 300px;
+  font-size: 17px
+}
+
+.title-style {
+  text-align: start;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 7px;
+  width: 20%
+}
+
+.select-style {
+  height: 54px;
+  padding: 5px;
+  margin-left: 30px;
+  width: 90px;
+}
+
+@media screen and (max-width: 1366px) {
+  .card {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .title-style {
+    width: 100%
+  }
+
+  .card-header {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .title-style {
+    width: 100%
+  }
+
+  .card-header {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .title-style {
+    width: 100%
+  }
+
+  .input-style {
+    width: 55vw;
+  }
+
+  .select-style {
+    width: 15vw;
+    margin-left: 15px;
+  }
+
+  .card-header {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .pagenation {
+    width: 350px;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
