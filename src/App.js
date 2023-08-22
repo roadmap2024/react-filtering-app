@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+// Import Components Section
+import Header from './components/Header';
+import Pagenation from './components/Pagenation';
+// Import Actions Section
 import { fetchData } from './redux/actions/cardActions';
 
 function App() {
@@ -19,8 +21,15 @@ function App() {
     dispatch(fetchData());
   }, [dispatch])
 
+  const [currentPage, setCurrentPage] = useState(1);
+
   const cardData = useSelector((state) => state.CardReducers.post);
 
+  const pageCount = Math.ceil(cardData.length / 8);      //  pageCount is total page
+  const firstItemIndex = (currentPage - 1) * 8;          //  firstItemIndex is previous page index
+  const lastItemIndex = firstItemIndex + 8;              //  lastItemIndex is previous page + item_count
+  const currentItems = cardData.slice(firstItemIndex, lastItemIndex);     // currentItems is total array cut item_count
+  
   return (
     <div className="App">
       <Header search={search}  setSearch={setSearch} handleChange={handleChange}></Header>
@@ -28,7 +37,7 @@ function App() {
       <div className="body">
         <div className='card'>
           {
-            cardData ? cardData.map((item, i) => {
+            currentItems ? currentItems.map((item, i) => {
               return(
                 <div style={{border: "1px solid #787878", padding: "15px"}} key={i}>
                   <div style={{display: 'flex', borderBottom: "1px solid #787878", height: "55px"}}>
@@ -48,7 +57,9 @@ function App() {
           }
         </div>
 
-        <div className='pagenation'></div>
+        <div style={{display: 'flex', justifyContent: "center", width: "100%", marginBottom: "50px"}}>
+          <Pagenation pageCount={pageCount} currentPage={currentPage} onChange={(event, page) => setCurrentPage(page)}></Pagenation>
+        </div>
       </div>
     </div>
   );
