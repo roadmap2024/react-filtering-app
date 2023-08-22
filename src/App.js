@@ -26,20 +26,25 @@ function App() {
       <Header search={search}  setSearch={setSearch} handleChange={handleChange}></Header>
 
       <div className="body">
-        <div className='card' style={{display: "flex"}}>
+        <div className='card'>
           {
             cardData ? cardData.map((item, i) => {
               return(
-                <div key={i}>
-                  <div>Title</div>
-                  <div>{item.title}</div>
-                  <div>Body</div>
-                  <div>{item.body}</div>
+                <div style={{border: "1px solid #787878", padding: "15px"}} key={i}>
+                  <div style={{display: 'flex', borderBottom: "1px solid #787878", height: "55px"}}>
+                    <div style={{textAlign: 'start', fontWeight: 'bold', fontSize: "20px", marginRight: "7px", width: "15%"}}>Title : </div>
+                    <div style={{width: "85%", textAlign: "start"}}>{item.title}</div>
+                  </div>
+                  
+                  <div style={{marginTop: "10px"}}>
+                    <div style={{textAlign: 'start', fontWeight: 'bold', fontSize: "20px", marginRight: "7px"}}>Body</div>
+                    <div style={{textAlign: 'start', fontSize: "16px", marginTop: "5px"}}>{item.body}</div>
+                  </div>
                 </div>
               )
-            }
-              
-            ) : "No card"
+            }) 
+            : 
+            "No card"
           }
         </div>
 
